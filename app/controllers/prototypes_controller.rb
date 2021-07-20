@@ -1,6 +1,7 @@
 class PrototypesController < ApplicationController
     before_action :authenticate_user!,except: [:index, :show,]
-
+    before_action :move_to_index,except: [:index]
+    
     def index
         @prototypes = Prototype.all
     end
@@ -49,8 +50,7 @@ class PrototypesController < ApplicationController
       end
 
       def move_to_index
-        unless user_signed_in?
-          redirect_to action: :index
-        end
+          @prototype = Prototype.find(params[:id])
+          redirect_to root_path unless  current_user == @prototype.user
       end
-end
+        end
