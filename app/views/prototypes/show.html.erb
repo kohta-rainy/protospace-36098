@@ -52,8 +52,8 @@
           <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
           <%= comment.text %>
           </p>
-          <% end %>
-              <%= link_to "#{current_user.name}", user_path(@prototype.user_id), class: :comment_user %>
+              <%= link_to "#{comment.user.name}", user_path(@prototype.user_id), class: :comment_user %>
+           <% end %>
             </li>
           <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
         </ul>
